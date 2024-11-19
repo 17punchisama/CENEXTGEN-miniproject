@@ -19,7 +19,8 @@ Servo servo1;
 #define OLED_RESET -1
 Adafruit_SSD1306 OLED(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-//add 
+String username = "";
+String current_time = "";
 
 //=================================================================================================
 // WiFi และ MQTT Configuration
@@ -65,7 +66,10 @@ void callback(char *topic, byte *payload, unsigned int length) {
   Serial.println(message);
   Serial.println("-----------------------");
 
-  //your code 
+  if (strcmp(topic, topic_username) == 0) {
+    username = message;
+  } 
+  // your code for current_time
 }
 
 void reconnect() {
@@ -118,7 +122,7 @@ void loop() {
 
   float distance = measureDistance();
 
-  //your code
+  //your code for sending mqtt and close-open the door (อย่าลืมกันการ spam ค่าที่มีการเปลี่ยนแปลงตลอดเวลา อาจทำให้ servo ทำงานรัว)
 
   OLED.clearDisplay();
   OLED.setTextColor(WHITE, BLACK);
