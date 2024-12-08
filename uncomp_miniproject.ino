@@ -34,6 +34,7 @@ const char* topic_username = "TOPIC_USERNAME";
 const char* topic_time = "TOPIC_TIME";
 const char* publish_topic = "TOPIC_DOOR";
 const char* distance_topic = "TOPIC_DISTANCE";
+const char* manual_topic = "TOPIC_DOOR_MANUAL";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
