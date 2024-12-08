@@ -83,7 +83,7 @@ void reconnect() {
     client_id += String(WiFi.macAddress());
     Serial.printf("The client %s connects to the public mqtt broker\n", client_id.c_str());
 
-    if (client.connect(client_id.c_str())) {
+    if (client.connect(client_id.c_str(), mqtt_username, mqtt_password)) {
       Serial.println("Public MQTT broker connected");
       client.subscribe(topic_username);
       client.subscribe(topic_time);
