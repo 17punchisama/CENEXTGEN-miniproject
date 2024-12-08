@@ -27,11 +27,13 @@ String current_time = "";
 const char* ssid = "WIFINAME";
 const char* password = "PASSWORD";
 const char* mqtt_broker = "BROKER";
+const char* mqtt_username = "USERNAME";
+const char* mqtt_password = "PASSWORD";
 const int mqtt_port = 1883;
-const char* topic_username = "CENEXTGEN/oled/username";
-const char* topic_time = "CENEXTGEN/oled/time";
-const char* publish_topic = "CENEXTGEN/doorStatus";
-const char* distance_topic = "CENEXTGEN/distance";
+const char* topic_username = "TOPIC_USERNAME";
+const char* topic_time = "TOPIC_TIME";
+const char* publish_topic = "TOPIC_DOOR";
+const char* distance_topic = "TOPIC_DISTANCE";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -68,8 +70,11 @@ void callback(char *topic, byte *payload, unsigned int length) {
 
   if (strcmp(topic, topic_username) == 0) {
     username = message;
-  } 
-  // your code for current_time
+  } else if {
+  // your code for current_time  
+ } else if {
+    // your code for mode selector
+  }
 }
 
 void reconnect() {
@@ -91,7 +96,12 @@ void reconnect() {
 }
 
 float measureDistance() {
-  //your code return ระยะทางที่วัดได้
+  // code วัดระยะทางที่ได้จาก docx sensor
+  
+  if(distance > 4.00) {
+    return distance;
+  }
+  return 99;
 }
 
 void setup() {
